@@ -1,0 +1,26 @@
+2025-10-26 22:35:02  HttpDownloader::getURL: url: https://emsfs.autodesk.com/utility/wingman/update.xml
+2025-10-26 22:35:02  HttpDownloader::getURL: use user proxy settings.
+2025-10-26 22:35:02  HttpDownloader::getURL: download file C:\Windows\TEMP\AdAppMgrUpdater\update.xml completed
+2025-10-26 22:35:02  Successfully downloaded update.xml
+2025-10-26 22:35:02  Compare Version: 9.0.0.0 To: 7.0.14.33
+2025-10-26 22:35:02  [ERROR] ERROR: Util::getDownloadedVersion(): Failed to get the file version!2025-10-26 22:35:02  INFO: HttpDownloader::getInstaller(): Downloaded version: 
+2025-10-26 22:35:02  HttpDownloader::getURL: url: https://emsfs.autodesk.com/utility/invalidlinkodis/1/installer/latest/AdODIS-installer.exe
+2025-10-26 22:35:02  HttpDownloader::getURL: use user proxy settings.
+2025-10-26 22:35:02  HttpDownloader::getURL: download file C:\Windows\TEMP\AdAppMgrUpdater\AdApplicationManager-installer.exe completed
+2025-10-26 22:35:02  [ERROR] Error is: 0x800b0003.
+2025-10-26 22:35:02  [ERROR] Signature is not valid.
+2025-10-26 22:35:02  Retrying...
+2025-10-26 22:35:02  [ERROR] ERROR: Util::getDownloadedVersion(): Failed to get the file version!2025-10-26 22:35:02  INFO: HttpDownloader::getInstaller(): Downloaded version: 
+2025-10-26 22:35:02  HttpDownloader::getURL: url: https://emsfs.autodesk.com/utility/invalidlinkodis/1/installer/latest/AdODIS-installer.exe
+2025-10-26 22:35:02  HttpDownloader::getURL: use user proxy settings.
+2025-10-26 22:35:03  HttpDownloader::getURL: download file C:\Windows\TEMP\AdAppMgrUpdater\AdApplicationManager-installer.exe completed
+2025-10-26 22:35:03  [ERROR] Error is: 0x800b0003.
+2025-10-26 22:35:03  [ERROR] Signature is not valid.
+2025-10-26 22:35:03  Retrying...
+2025-10-26 22:35:03  [ERROR] ERROR: Util::getDownloadedVersion(): Failed to get the file version!2025-10-26 22:35:03  INFO: HttpDownloader::getInstaller(): Downloaded version: 
+2025-10-26 22:35:03  HttpDownloader::getURL: url: https://emsfs.autodesk.com/utility/invalidlinkodis/1/installer/latest/AdODIS-installer.exe
+2025-10-26 22:35:03  HttpDownloader::getURL: use user proxy settings.
+2025-10-26 22:35:03  HttpDownloader::getURL: download file C:\Windows\TEMP\AdAppMgrUpdater\AdApplicationManager-installer.exe completed
+2025-10-26 22:35:03  [ERROR] Error is: 0x800b0003.
+2025-10-26 22:35:03  [ERROR] Signature is not valid.
+2025-10-26 22:35:03  [ERROR] Failed to download Installer, return now

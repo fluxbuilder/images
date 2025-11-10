@@ -1,0 +1,14 @@
+{
+  "version": "1",
+  "generator": "@dotlottie/dotlottie-js@1.2.0",
+  "author": "@dotlottie/dotlottie-js@1.2.0",
+  "animations": [
+    {
+      "id": "3c1f42ba-e429-41a7-bb7d-d5d613339612",
+      "playMode": "normal"
+    }
+  ],
+  "layers": [],
+  "w": 64,
+  "h": 64
+}

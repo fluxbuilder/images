@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Kurti Promo</title>
+    <style>
+        /* --- CSS STYLES --- */
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* 1. Main Card Container (Small & Compact) */
+        .promo-card {
+            width: 600px; /* Chota size */
+            height: 220px;
+            background: linear-gradient(135deg, #fff0f5, #fff);
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            display: flex;
+            overflow: hidden; /* Images bahar na nikle */
+            position: relative;
+            cursor: pointer;
+            border: 1px solid #ffccd5;
+            transition: transform 0.3s ease;
+        }
+
+        .promo-card:hover {
+            transform: translateY(-5px); /* Mouse le jane par thoda uthega */
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        /* 2. Left Side: Images with Animation */
+        .image-section {
+            width: 45%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .kurti-pic {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        /* Animation: Images swapping automatically */
+        .kurti-pic:nth-child(1) { animation: fadeSwitch 6s infinite; }
+        .kurti-pic:nth-child(2) { animation: fadeSwitch 6s infinite reverse; }
+
+        @keyframes fadeSwitch {
+            0% { opacity: 1; transform: scale(1); }
+            45% { opacity: 1; transform: scale(1.05); }
+            50% { opacity: 0; }
+            95% { opacity: 0; }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* 3. Right Side: Text & Content */
+        .content-section {
+            width: 55%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .sale-tag {
+            display: inline-block;
+            background: #ff0055;
+            color: white;
+            padding: 4px 12px;
+            font-size: 0.8rem;
+            border-radius: 20px;
+            font-weight: bold;
+            width: fit-content;
+            margin-bottom: 8px;
+            box-shadow: 0 0 10px rgba(255, 0, 85, 0.5);
+            animation: pulse 1.5s infinite; /* Dhadakne wala effect */
+        }
+
+        h2 {
+            margin: 0;
+            color: #333;
+            font-size: 1.5rem;
+            line-height: 1.2;
+        }
+
+        p {
+            color: #666;
+            font-size: 0.95rem;
+            margin: 8px 0 15px 0;
+        }
+
+        .price {
+            font-size: 1.2rem;
+            color: #ff0055;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .cut-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 0.9rem;
+            margin-left: 5px;
+        }
+
+        /* Button Styling */
+        .btn-buy {
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            text-align: center;
+            transition: 0.3s;
+            display: inline-block;
+            width: fit-content;
+        }
+
+        .btn-buy:hover {
+            background-color: #ff0055;
+        }
+
+        /* 4. Shine Effect Overlay (Chamak) */
+        .shine-layer {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-25deg);
+            animation: shine 3s infinite;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* --- ANIMATION KEYFRAMES --- */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            20% { left: 200%; } /* Fast swipe */
+            100% { left: 200%; } /* Wait */
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            .promo-card {
+                width: 90%;
+                height: auto;
+                flex-direction: column;
+            }
+            .image-section, .content-section {
+                width: 100%;
+            }
+            .image-section { height: 200px; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="promo-card">
+        <div class="shine-layer"></div>
+
+        <div class="image-section">
+            <img src="https://placehold.co/300x400/800020/fff?text=Kurti+1" class="kurti-pic" alt="Kurti 1">
+            <img src="https://placehold.co/300x400/ffcc00/000?text=Kurti+2" class="kurti-pic" alt="Kurti 2">
+        </div>
+
+        <div class="content-section">
+            <div class="sale-tag">🔥 FLASH SALE</div>
+            <h2>Combo Dhamaka!</h2>
+            <p>2 Designer Kurti sirf ek ke daam mein.</p>
+            <div class="price">₹ 999 <span class="cut-price">₹ 1999</span></div>
+            <a href="#" class="btn-buy">Abhi Order Karein &rarr;</a>
+        </div>
+    </div>
+    </body>
+</html>

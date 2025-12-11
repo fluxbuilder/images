@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fixed Promo Banner</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+:root {
+--bg-purple: #f3e8ff;
+--text-purple: #6b21a8;
+--card-white: #ffffff;
+--green-check: #2e7d32;
+}
+
+body {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+margin: 0;
+/* बैनर के लिए नीचे जगह छोड़ने के लिए पैडिंग, ताकि कंटेंट छिप न जाए */
+padding-bottom: 200px;
+background-color: #f5f5f5; /* पेज का बैकग्राउंड अलग रखा ताकि बैनर साफ़ दिखे */
+}
+
+/* --- Main Changes Here --- */
+.promo-banner {
+background-color: var(--bg-purple);
+padding: 15px 20px;
+border-radius: 16px 16px 0 0; /* ऊपर के कोने गोल, नीचे के सीधे (Optional) */
+
+/* Position Fixed Logic */
+position: fixed; /* स्क्रीन पर फिक्स करने के लिए */
+bottom: 0; /* बिल्कुल नीचे चिपका हुआ */
+left: 50%; /* सेंटर करने के लिए */
+transform: translateX(-50%); /* सेंटर करने का तरीका */
+
+width: 100%; /* पूरी चौड़ाई */
+max-width: 800px; /* डेस्कटॉप पर ज्यादा चौड़ा न हो */
+box-sizing: border-box;
+box-shadow: 0 -4px 20px rgba(0,0,0,0.1); /* शैडो ताकि बैनर अलग दिखे */
+z-index: 1000; /* सबसे ऊपर दिखे */
+}
+/* ------------------------- */
+
+.cards-container {
+display: flex;
+gap: 15px;
+margin-bottom: 15px;
+}
+
+.promo-card {
+background-color: var(--card-white);
+border-radius: 12px;
+padding: 10px 15px;
+flex: 1;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+min-height: 60px; /* हाइट थोड़ी कम की है फिक्स्ड फूटर के लिए */
+}
+
+/* Bag Icon */
+.icon-bag { font-size: 28px; color: #9333ea; }
+.price-text { font-size: 30px; font-weight: 800; color: var(--text-purple); line-height: 1; }
+.fees-text { font-size: 22px; font-weight: 800; color: var(--text-purple); }
+
+/* Badge Icon */
+.icon-badge { font-size: 32px; color: #9333ea; }
+.promo-text-stack { display: flex; flex-direction: column; color: var(--text-purple); font-weight: 800; line-height: 1.1; }
+.promo-text-small { font-size: 13px; letter-spacing: 0.5px; }
+.promo-text-large { font-size: 18px; }
+
+/* Bottom Features */
+.features-row {
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+gap: 8px;
+}
+
+.feature-item {
+display: flex;
+align-items: center;
+gap: 6px;
+font-weight: 700;
+color: var(--text-purple);
+font-size: 14px;
+}
+
+.check-circle {
+background-color: var(--green-check);
+color: white;
+border-radius: 50%;
+width: 18px;
+height: 18px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 10px;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 600px) {
+.promo-banner {
+border-radius: 16px 16px 0 0; /* मोबाइल पर नीचे से चिपका हुआ */
+width: 100%;
+max-width: 100%;
+}
+.cards-container {
+gap: 10px;
+}
+.promo-text-large { font-size: 14px; }
+.price-text { font-size: 24px; }
+.features-row {
+justify-content: center; /* मोबाइल पर टेक्स्ट सेंटर हो */
+}
+.feature-item {
+font-size: 12px;
+}
+}
+</style>
+</head>
+<body>
+
+<div style="padding: 20px; text-align: center; color: #888;">
+<h2>Scroll Down 👇</h2>
+<p>This represents your website content.</p>
+<p>Keep scrolling to see the fixed banner staying at the bottom.</p>
+<br><br><br><br><br><br><br><br><br><br>
+<p>More Content...</p>
+<br><br><br><br><br><br><br><br><br><br>
+<p>End of page.</p>
+</div>
+
+<div class="promo-banner">
+<div class="cards-container">
+<div class="promo-card">
+<i class="fa-solid fa-shopping-bag icon-bag"></i>
+<div>
+<span class="price-text">₹0</span>
+<span class="fees-text">FEES</span>
+</div>
+</div>
+<div class="promo-card">
+<i class="fa-solid fa-certificate icon-badge"></i>
+<div class="promo-text-stack">
+<span class="promo-text-small">EVERYDAY</span>
+<span class="promo-text-large">LOWEST PRICES*</span>
+</div>
+</div>
+</div>
+
+<div class="features-row">
+<div class="feature-item">
+<span class="check-circle"><i class="fa-solid fa-check"></i></span>
+₹0 Handling Fee
+</div>
+<div class="feature-item">
+<span class="check-circle"><i class="fa-solid fa-check"></i></span>
+₹0 Delivery Fee*
+</div>
+<div class="feature-item">
+<span class="check-circle"><i class="fa-solid fa-check"></i></span>
+₹0 Rain Fee
+</div>
+</div>
+</div>
+
+</body>
+</html>

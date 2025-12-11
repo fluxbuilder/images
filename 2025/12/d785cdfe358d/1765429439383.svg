@@ -1,0 +1,63 @@
+<svg width="800" height="220" viewBox="0 0 800 220" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<style>
+.bg { fill: #f3e8ff; }
+.card-bg { fill: #ffffff; }
+.text-purple { fill: #6b21a8; font-family: sans-serif; font-weight: bold; }
+.icon-purple { fill: #9333ea; }
+.green-circle { fill: #2e7d32; }
+.checkmark { stroke: #ffffff; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+</style>
+</defs>
+
+<rect width="100%" height="100%" rx="16" class="bg"/>
+
+<g transform="translate(20, 20)">
+<rect width="370" height="110" rx="12" class="card-bg"/>
+
+<g transform="translate(30, 25)">
+<path d="M10 15 Q10 0 25 0 T40 15 V15 H45 V55 Q45 60 40 60 H10 Q5 60 5 55 V15 H10 Z M15 15 Q15 5 25 5 T35 15" fill="none" stroke="#9333ea" stroke-width="4" stroke-linecap="round"/>
+<rect x="5" y="15" width="40" height="40" rx="3" fill="#9333ea" opacity="0.9"/>
+<path d="M18 15 A 7 7 0 0 1 32 15" stroke="white" stroke-width="2" fill="none"/>
+<text x="18" y="42" fill="white" font-family="sans-serif" font-weight="bold" font-size="20">Z</text>
+</g>
+
+<text x="90" y="70" class="text-purple" font-size="48">₹0 FEES</text>
+</g>
+
+<g transform="translate(410, 20)">
+<rect width="370" height="110" rx="12" class="card-bg"/>
+
+<g transform="translate(25, 25)">
+<path d="M30 0 L37 10 L50 10 L45 20 L50 32 L38 35 L30 48 L22 35 L10 32 L15 20 L10 10 L23 10 Z" class="icon-purple"/>
+<circle cx="42" cy="15" r="12" fill="#ffd700"/>
+<text x="36" y="20" fill="#b45309" font-family="sans-serif" font-weight="bold" font-size="14">₹</text>
+<path d="M20 18 L25 28 L35 22 M35 22 L33 28 M35 22 L29 20" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+
+<text x="90" y="55" class="text-purple" font-size="18">EVERYDAY</text>
+<text x="90" y="85" class="text-purple" font-size="26">LOWEST PRICES*</text>
+</g>
+
+<g transform="translate(40, 170)">
+
+<g>
+<circle cx="10" cy="-5" r="12" class="green-circle"/>
+<path d="M5 -5 L9 0 L15 -10" class="checkmark"/>
+<text x="30" y="0" class="text-purple" font-size="18">₹0 Handling Fee</text>
+</g>
+
+<g transform="translate(260, 0)">
+<circle cx="10" cy="-5" r="12" class="green-circle"/>
+<path d="M5 -5 L9 0 L15 -10" class="checkmark"/>
+<text x="30" y="0" class="text-purple" font-size="18">₹0 Delivery Fee*</text>
+</g>
+
+<g transform="translate(520, 0)">
+<circle cx="10" cy="-5" r="12" class="green-circle"/>
+<path d="M5 -5 L9 0 L15 -10" class="checkmark"/>
+<text x="30" y="0" class="text-purple" font-size="18">₹0 Rain &amp; Surge Fee</text>
+</g>
+
+</g>
+</svg>

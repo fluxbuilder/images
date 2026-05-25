@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="سياسية">
+  <title>سياسية</title>
+  <g fill="none" stroke="#1f28c8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32 12.5 L52 21.5 H12 Z" />
+        <path d="M16 25.5 H48" />
+        <path d="M18.5 25.5 V47" />
+        <path d="M27.5 25.5 V47" />
+        <path d="M36.5 25.5 V47" />
+        <path d="M45.5 25.5 V47" />
+        <path d="M14 50.5 H50" />
+  </g>
+</svg>

@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="202" viewBox="0 0 1000 202">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 180px;
+        font-family: Montserrat;
+        font-weight: 800;
+        font-style: italic;
+      }
+
+      .cls-1, .cls-10 {
+        fill: #02389f;
+      }
+
+      .cls-2 {
+        fill: #010e37;
+      }
+
+      .cls-3 {
+        font-size: 37.47px;
+        fill: #20222a;
+        font-family: Montserrat-SemiBold, Montserrat;
+        font-weight: 700;
+      }
+
+      .cls-4 {
+        fill: #464646;
+        stroke: #606060;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 5px;
+      }
+
+      .cls-10, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8, .cls-9 {
+        fill-rule: evenodd;
+      }
+
+      .cls-5 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-6 {
+        fill: url(#linear-gradient-2);
+      }
+
+      .cls-7 {
+        fill: url(#linear-gradient-3);
+      }
+
+      .cls-8 {
+        fill: url(#linear-gradient-4);
+      }
+
+      .cls-9 {
+        fill: url(#linear-gradient-5);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="90.141" y1="183.406" x2="90.141" y2="57.344" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#01216b"/>
+      <stop offset="1" stop-color="#032979"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="149" y1="34.094" x2="202.719" y2="34.094" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#bb1015"/>
+      <stop offset="1" stop-color="#e01920"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-3" x1="22.969" y1="36.172" x2="162" y2="36.172" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#012a81"/>
+      <stop offset="1" stop-color="#0055d8"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-4" x1="140.094" y1="79.219" x2="186.75" y2="79.219" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#010e37"/>
+      <stop offset="0.992" stop-color="#02389f"/>
+      <stop offset="1" stop-color="#02389f"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-5" x1="122.719" y1="127.125" x2="179.125" y2="127.125" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#010e37"/>
+      <stop offset="1" stop-color="#02389f"/>
+    </linearGradient>
+  </defs>
+  <text id="TINEWS" class="cls-1" x="247.104" y="140.928">TI<tspan class="cls-2">NEWS</tspan></text>
+  <text id="TINTA_INFORMASI_NEWS_APP" data-name="TINTA INFORMASI NEWS APP" class="cls-3" x="401.259" y="183.375">TINTA INFORMASI NEWS APP</text>
+  <path class="cls-4" d="M308.5,168.5h74v3h-74v-3Z"/>
+  <path class="cls-5" d="M126.581,57.344L92.8,183.416,53.686,144.3l23.3-86.959h49.594Z"/>
+  <path class="cls-6" d="M201.033,20.548c-3.885,14.5-15.493,27.048-29.208,33.283L149,14.3h53.706ZM171.779,53.873h-0.043l0.089-.041,0.01,0.017Z"/>
+  <path class="cls-7" d="M161.987,57.116a40.977,40.977,0,0,1-8.49.922H22.975L34.695,14.3h102.71l24.582,42.577v0.239Z"/>
+  <path class="cls-8" d="M145.106,69.841h41.656l-5.023,18.745H140.083Z"/>
+  <path id="Rectangle_6_copy_3" data-name="Rectangle 6 copy 3" class="cls-9" d="M174.1,117.745h0.163l-5.022,18.745h0.162l-5.022,18.746H122.727l5.022-18.746h-0.162l5.022-18.745h-0.163L137.469,99h41.656Z"/>
+  <path class="cls-10" d="M232.017,4.977l9.659,2.588L191.983,193.023l-9.659-2.588Z"/>
+</svg>

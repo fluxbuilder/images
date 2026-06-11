@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ratnor Splash Screen</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg,
+      #0e1d52 0%,
+      #1a2f7a 26%,
+      #5d4490 46%,
+      #c96f3a 64%,
+      #f2a953 78%,
+      #f7cf8a 100%);
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    position: relative;
+  }
+
+  /* ---------- Sun ---------- */
+  .sun {
+    position: absolute;
+    left: 72%;
+    bottom: 30vh;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fff3cc 0%, #ffd27a 50%, rgba(255,180,80,0) 74%);
+    filter: blur(2px);
+    animation: sunGlow 5s ease-in-out infinite;
+    z-index: 1;
+  }
+  @keyframes sunGlow {
+    0%, 100% { opacity: 0.85; transform: scale(1); }
+    50%      { opacity: 1;    transform: scale(1.06); }
+  }
+
+  .star {
+    position: absolute;
+    border-radius: 50%;
+    background: #fff;
+    animation: twinkle ease-in-out infinite;
+    z-index: 1;
+  }
+  @keyframes twinkle { 0%,100%{opacity:.15} 50%{opacity:.9} }
+
+  /* ---------- Dunes ---------- */
+  .dunes {
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* ---------- Top branding ---------- */
+  .branding {
+    position: absolute;
+    top: 6vh;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    z-index: 6;
+    text-align: center;
+  }
+
+  /* ===== LOGO: drops from the sky, bounces, lands ===== */
+  .logo-card {
+    width: 142px;
+    height: 142px;
+    background: #ffffff;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow:
+      0 18px 42px rgba(14,29,82,.5),
+      0 0 0 5px rgba(255,255,255,.22),
+      0 0 50px rgba(255,217,138,.35);
+    animation: dropFromSky 1.7s cubic-bezier(.36,1.2,.45,1) both;
+  }
+
+  .logo-card svg { width: 84%; height: 84%; }
+
+  @keyframes dropFromSky {
+    0%   { transform: translateY(-72vh) rotate(-16deg) scale(.6); opacity: 0; }
+    6%   { opacity: 1; }
+    55%  { transform: translateY(0) rotate(0deg) scale(1); }      /* first touch */
+    68%  { transform: translateY(-30px) rotate(2deg) scale(1.04); } /* bounce up */
+    80%  { transform: translateY(0) rotate(0deg) scale(.97); }     /* second touch */
+    89%  { transform: translateY(-9px) scale(1.01); }              /* tiny bounce */
+    100% { transform: translateY(0) scale(1); }
+  }
+
+  /* Gold impact flash on landing */
+  .impact {
+    position: absolute;
+    left: 50%;
+    bottom: -14px;
+    width: 170px;
+    height: 26px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(255,217,138,.95) 0%, rgba(255,180,80,.4) 45%, transparent 72%);
+    animation: impactFlash 1.7s ease-out both;
+    pointer-events: none;
+  }
+  @keyframes impactFlash {
+    0%, 52% { opacity: 0; transform: translateX(-50%) scaleX(.15); }
+    58%     { opacity: 1; transform: translateX(-50%) scaleX(1.5); }
+    78%     { opacity: .4; transform: translateX(-50%) scaleX(2.1); }
+    100%    { opacity: 0; transform: translateX(-50%) scaleX(2.5); }
+  }
+
+  /* Landing sparkles burst */
+  .spark {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 7px;
+    height: 7px;
+    background: #ffd98a;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(255,217,138,.9);
+    opacity: 0;
+    animation: sparkBurst 1.7s ease-out both;
+    pointer-events: none;
+  }
+  @keyframes sparkBurst {
+    0%, 53% { opacity: 0; transform: translate(0,0) scale(1); }
+    58%     { opacity: 1; }
+    100%    { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(.2); }
+  }
+
+  /* Falling whoosh streaks behind the logo */
+  .whoosh {
+    position: absolute;
+    left: 50%;
+    top: -10px;
+    width: 3px;
+    height: 60px;
+    border-radius: 3px;
+    background: linear-gradient(180deg, transparent, rgba(255,255,255,.7));
+    opacity: 0;
+    animation: whooshFall 1.7s ease-in both;
+    pointer-events: none;
+  }
+  @keyframes whooshFall {
+    0%   { opacity: 0; transform: translateY(-66vh); }
+    10%  { opacity: .8; }
+    50%  { opacity: .5; transform: translateY(-8vh); }
+    56%  { opacity: 0; transform: translateY(0); }
+    100% { opacity: 0; }
+  }
+
+  /* ---------- Brand text: appears AFTER landing ---------- */
+  .brand-ar {
+    font-size: 50px;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 2px 20px rgba(14,29,82,.65), 0 0 28px rgba(242,179,92,.4);
+    font-family: 'Traditional Arabic', 'Amiri', 'Scheherazade New', serif;
+    line-height: 1;
+    animation: fadeUp 1s ease 1.55s both;
+  }
+
+  .brand-en {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 9px;
+    color: #1a2f7a;
+    background: #f7d08a;
+    padding: 5px 14px 5px 23px;
+    border-radius: 24px;
+    box-shadow: 0 4px 16px rgba(14,29,82,.35);
+    font-family: Georgia, serif;
+    animation: fadeUp 1s ease 1.85s both;
+  }
+
+  .tagline {
+    font-size: 13px;
+    color: rgba(255,255,255,.92);
+    letter-spacing: 1px;
+    text-shadow: 0 1px 8px rgba(14,29,82,.6);
+    animation: fadeUp 1s ease 2.1s both;
+  }
+
+  @keyframes fadeUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to   { transform: translateY(0); opacity: 1; }
+  }
+
+  /* ---------- Rider scene ---------- */
+  .rider-scene {
+    position: absolute;
+    bottom: 9vh;
+    left: -480px;
+    width: 440px;
+    z-index: 4;
+    animation: rideAcross 22s linear infinite;
+  }
+  @keyframes rideAcross {
+    from { transform: translateX(0); }
+    to   { transform: translateX(calc(100vw + 960px)); }
+  }
+
+  .rider-bob { animation: bob 0.9s ease-in-out infinite; }
+  @keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-5px); }
+  }
+
+  .leg { transform-box: fill-box; transform-origin: top center; }
+  .leg-fl { animation: legSwing 0.9s ease-in-out infinite; }
+  .leg-bl { animation: legSwing 0.9s ease-in-out infinite; animation-delay: 0.45s; }
+  .leg-fr { animation: legSwing2 0.9s ease-in-out infinite; animation-delay: 0.45s; }
+  .leg-br { animation: legSwing2 0.9s ease-in-out infinite; }
+
+  @keyframes legSwing {
+    0%, 100% { transform: rotate(13deg); }
+    50%      { transform: rotate(-13deg); }
+  }
+  @keyframes legSwing2 {
+    0%, 100% { transform: rotate(-13deg); }
+    50%      { transform: rotate(13deg); }
+  }
+
+  .bag {
+    transform-box: fill-box;
+    transform-origin: top center;
+    animation: bagSwing 0.9s ease-in-out infinite;
+  }
+  @keyframes bagSwing {
+    0%, 100% { transform: rotate(7deg); }
+    50%      { transform: rotate(-7deg); }
+  }
+
+  .tail {
+    transform-box: fill-box;
+    transform-origin: top right;
+    animation: tailSway 1.8s ease-in-out infinite;
+  }
+  @keyframes tailSway {
+    0%, 100% { transform: rotate(4deg); }
+    50%      { transform: rotate(-6deg); }
+  }
+
+  .shemagh-tail {
+    transform-box: fill-box;
+    transform-origin: top center;
+    animation: flutter 1.4s ease-in-out infinite;
+  }
+  @keyframes flutter {
+    0%, 100% { transform: rotate(2deg) skewX(1deg); }
+    50%      { transform: rotate(-5deg) skewX(-3deg); }
+  }
+
+  .dust {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(222,184,135,.45);
+    filter: blur(3px);
+    animation: dustPuff 1.2s ease-out infinite;
+  }
+  @keyframes dustPuff {
+    from { transform: scale(.3) translateY(0); opacity: .7; }
+    to   { transform: scale(1.6) translateY(-14px) translateX(-22px); opacity: 0; }
+  }
+
+  .sand {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,220,160,.5);
+    animation: sandDrift linear infinite;
+    pointer-events: none;
+    z-index: 3;
+  }
+  @keyframes sandDrift {
+    from { transform: translateX(-5vw); opacity: 0; }
+    15%  { opacity: .8; }
+    85%  { opacity: .35; }
+    to   { transform: translateX(108vw) translateY(-28px); opacity: 0; }
+  }
+
+  .loader {
+    position: absolute;
+    bottom: 3.5vh;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 9px;
+    z-index: 6;
+    animation: fadeUp 1s ease 2.3s both;
+  }
+  .loader span {
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: #1a2f7a;
+    box-shadow: 0 0 8px rgba(26,47,122,.5);
+    animation: dotBounce 1.2s ease-in-out infinite;
+  }
+  .loader span:nth-child(2) { animation-delay: .18s; }
+  .loader span:nth-child(3) { animation-delay: .36s; }
+  @keyframes dotBounce {
+    0%, 100% { transform: translateY(0); opacity: .4; }
+    50%      { transform: translateY(-9px); opacity: 1; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sun"></div>
+
+<!-- Dunes -->
+<svg class="dunes" viewBox="0 0 1440 320" preserveAspectRatio="none" height="30%">
+  <path d="M0,170 Q300,80 650,150 T1440,130 L1440,320 L0,320 Z" fill="#cf8f42" opacity=".88"/>
+  <path d="M0,225 Q420,135 820,210 T1440,195 L1440,320 L0,320 Z" fill="#b3702c"/>
+  <path d="M0,278 Q360,208 760,268 T1440,252 L1440,320 L0,320 Z" fill="#8a5420"/>
+  <path d="M0,170 Q300,80 650,150 T1440,130" fill="none" stroke="#ffd98a" stroke-width="2" opacity=".5"/>
+  <path d="M0,225 Q420,135 820,210 T1440,195" fill="none" stroke="#ffce75" stroke-width="2" opacity=".4"/>
+</svg>
+
+<!-- Branding: logo drops from sky -->
+<div class="branding">
+
+  <div class="logo-card">
+    <!-- whoosh streaks while falling -->
+    <div class="whoosh" style="margin-left:-30px;"></div>
+    <div class="whoosh" style="margin-left:22px; animation-delay:.06s;"></div>
+    <!-- landing flash -->
+    <div class="impact"></div>
+    <!-- landing sparkles -->
+    <div class="spark" style="--dx:-58px; --dy:-34px;"></div>
+    <div class="spark" style="--dx:54px;  --dy:-40px;"></div>
+    <div class="spark" style="--dx:-36px; --dy:-58px;"></div>
+    <div class="spark" style="--dx:40px;  --dy:-14px;"></div>
+    <div class="spark" style="--dx:-66px; --dy:-8px;"></div>
+    <div class="spark" style="--dx:66px;  --dy:-24px;"></div>
+
+    <!-- Ratnor logo (clear, on white like the original) -->
+    <svg viewBox="0 0 220 230" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="blueR" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#2643b0"/>
+          <stop offset="100%" stop-color="#0e1d52"/>
+        </linearGradient>
+        <linearGradient id="goldL" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#f3d97a"/>
+          <stop offset="50%" stop-color="#d4af37"/>
+          <stop offset="100%" stop-color="#b8902e"/>
+        </linearGradient>
+      </defs>
+
+      <!-- Gold bag handle -->
+      <path d="M86 60 L86 38 Q86 12 113 12 Q140 12 140 38 L140 60"
+            fill="none" stroke="url(#goldL)" stroke-width="14" stroke-linecap="round"/>
+      <!-- handle holes -->
+      <circle cx="86" cy="64" r="9" fill="#fff"/>
+      <circle cx="140" cy="64" r="9" fill="#fff"/>
+      <circle cx="86" cy="64" r="13" fill="none" stroke="url(#blueR)" stroke-width="6"/>
+      <circle cx="140" cy="64" r="13" fill="none" stroke="url(#blueR)" stroke-width="6"/>
+
+      <!-- R body (bag shape) -->
+      <path d="M62 52
+               L130 52
+               Q178 52 178 97
+               Q178 132 147 139
+               L186 198
+               L150 198
+               L116 143
+               L99 143
+               L99 198
+               L62 198
+               Z
+               M99 85
+               L99 112
+               L127 112
+               Q143 112 143 98.5
+               Q143 85 127 85
+               Z"
+            fill="url(#blueR)" fill-rule="evenodd"/>
+
+      <!-- Folded corner top-left -->
+      <path d="M62 52 L85 75 L62 75 Z" fill="#0a1640"/>
+
+      <!-- Gold price tag -->
+      <g transform="rotate(-28 52 96)">
+        <path d="M40 84 L66 84 L75 102 L66 121 L40 121 Q33 121 33 114 L33 90 Q33 84 40 84 Z" fill="url(#goldL)"/>
+        <circle cx="44" cy="93" r="5" fill="#fff"/>
+        <path d="M56 102 L59.5 95 L63 102 L59.5 109 Z" fill="#fff"/>
+        <path d="M44 84 Q48 70 62 66" fill="none" stroke="url(#goldL)" stroke-width="4.5" stroke-linecap="round"/>
+      </g>
+
+      <!-- Gold cart speed-lines + wheels -->
+      <g fill="url(#goldL)">
+        <path d="M42 152 L94 152 L89 161 L47 161 Q41 161 42 152 Z"/>
+        <path d="M47 167 L88 167 L84 175 L51 175 Q46 174 47 167 Z"/>
+        <path d="M52 181 L82 181 L79 188 L56 188 Q51 187 52 181 Z"/>
+        <circle cx="61" cy="203" r="10"/>
+        <circle cx="94" cy="203" r="10"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="brand-ar">رتنور</div>
+  <div class="brand-en">Ratnor</div>
+  <div class="tagline">متجرك الموثوق &nbsp;•&nbsp; Your Trusted Store</div>
+</div>
+
+<!-- ============ SHEIKH ON CAMEL ============ -->
+<div class="rider-scene">
+  <div class="dust" style="left:30px; bottom:6px; width:34px; height:20px;"></div>
+  <div class="dust" style="left:70px; bottom:2px; width:26px; height:16px; animation-delay:.4s;"></div>
+  <div class="dust" style="left:110px; bottom:8px; width:22px; height:14px; animation-delay:.8s;"></div>
+
+  <div class="rider-bob">
+  <svg viewBox="0 0 440 330" xmlns="http://www.w3.org/2000/svg" width="440">
+    <defs>
+      <linearGradient id="camelBody" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#c89058"/>
+        <stop offset="55%" stop-color="#a8713a"/>
+        <stop offset="100%" stop-color="#7d5126"/>
+      </linearGradient>
+      <linearGradient id="camelNeck" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#b07c44"/>
+        <stop offset="100%" stop-color="#c89058"/>
+      </linearGradient>
+      <linearGradient id="thobe" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#ffffff"/>
+        <stop offset="100%" stop-color="#dcd9d2"/>
+      </linearGradient>
+      <linearGradient id="saddleG" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#f3d97a"/>
+        <stop offset="100%" stop-color="#b8902e"/>
+      </linearGradient>
+      <linearGradient id="bagBlue" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#2643b0"/>
+        <stop offset="100%" stop-color="#0e1d52"/>
+      </linearGradient>
+      <pattern id="shemaghPat" width="8" height="8" patternUnits="userSpaceOnUse">
+        <rect width="8" height="8" fill="#fff"/>
+        <path d="M0 0 L8 8 M8 0 L0 8" stroke="#c0392b" stroke-width="1.6"/>
+      </pattern>
+    </defs>
+
+    <ellipse cx="220" cy="318" rx="150" ry="13" fill="rgba(60,30,5,.3)"/>
+
+    <!-- far legs -->
+    <g class="leg leg-fr">
+      <path d="M276 220 Q280 248 274 268 Q272 286 278 306 L266 306 Q261 284 264 266 Q258 244 262 220 Z" fill="#8a5e30"/>
+      <ellipse cx="272" cy="308" rx="11" ry="6" fill="#6b4520"/>
+    </g>
+    <g class="leg leg-br">
+      <path d="M158 222 Q154 250 160 270 Q162 288 156 306 L168 306 Q173 286 170 268 Q176 246 172 222 Z" fill="#8a5e30"/>
+      <ellipse cx="162" cy="308" rx="11" ry="6" fill="#6b4520"/>
+    </g>
+
+    <!-- tail -->
+    <g class="tail">
+      <path d="M118 178 Q98 196 96 226 Q95 236 100 240" fill="none" stroke="#8a5e30" stroke-width="9" stroke-linecap="round"/>
+      <ellipse cx="100" cy="242" rx="7" ry="10" fill="#5e3d1c"/>
+    </g>
+
+    <!-- body -->
+    <path d="M120 200 Q108 170 124 152 Q138 120 172 122 Q196 96 226 110 Q258 100 278 126 Q310 132 314 164 Q322 196 300 212 Q282 228 250 224 L170 226 Q134 228 120 200 Z" fill="url(#camelBody)"/>
+    <path d="M150 222 Q210 238 290 218 Q250 232 200 232 Q168 232 150 222 Z" fill="#6b4520" opacity=".55"/>
+
+    <!-- near legs -->
+    <g class="leg leg-fl">
+      <path d="M292 214 Q298 244 290 266 Q288 288 296 308 L280 308 Q274 284 278 264 Q272 240 276 214 Z" fill="url(#camelBody)"/>
+      <path d="M280 268 L296 268 L294 276 L282 276 Z" fill="#8a5e30"/>
+      <ellipse cx="288" cy="310" rx="13" ry="7" fill="#7d5126"/>
+    </g>
+    <g class="leg leg-bl">
+      <path d="M146 216 Q140 246 148 268 Q150 290 142 308 L158 308 Q164 284 160 264 Q166 240 162 216 Z" fill="url(#camelBody)"/>
+      <ellipse cx="150" cy="310" rx="13" ry="7" fill="#7d5126"/>
+    </g>
+
+    <!-- neck -->
+    <path d="M296 150 Q318 128 324 96 Q327 76 340 66 L362 76 Q352 92 348 110 Q342 144 320 168 Q306 176 296 150 Z" fill="url(#camelNeck)"/>
+
+    <!-- head -->
+    <g>
+      <path d="M338 64 Q336 50 348 44 Q362 38 376 46 Q392 52 396 62 Q400 70 392 72 L368 78 Q348 82 338 64 Z" fill="#c89058"/>
+      <path d="M388 60 Q402 60 406 68 Q408 76 398 76 L384 74 Z" fill="#b07c44"/>
+      <circle cx="399" cy="68" r="2" fill="#4a2d12"/>
+      <path d="M392 76 Q398 80 404 78" fill="none" stroke="#4a2d12" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="362" cy="56" r="4" fill="#2b1708"/>
+      <circle cx="363.5" cy="54.5" r="1.3" fill="#fff"/>
+      <path d="M346 44 L342 32 L352 40 Z" fill="#a8713a"/>
+      <path d="M370 50 Q380 62 376 74" fill="none" stroke="#c0392b" stroke-width="2.5"/>
+      <path d="M376 74 Q330 96 282 108" fill="none" stroke="#8a4426" stroke-width="3" stroke-linecap="round"/>
+    </g>
+
+    <!-- saddle -->
+    <path d="M178 128 Q220 104 262 122 L256 168 Q218 152 186 170 Z" fill="url(#saddleG)"/>
+    <path d="M184 138 Q220 116 254 130 L251 160 Q218 146 190 162 Z" fill="#1a2f7a"/>
+    <path d="M190 146 Q220 128 248 138 L246 154 Q219 142 194 156 Z" fill="#c0392b" opacity=".85"/>
+    <g stroke="#d4af37" stroke-width="3" stroke-linecap="round">
+      <path d="M182 170 L180 184"/><path d="M196 172 L194 186"/>
+      <path d="M210 172 L209 186"/><path d="M224 170 L223 184"/>
+    </g>
+
+    <!-- sheikh: far arm + rein -->
+    <path d="M232 92 Q256 96 278 106 Q286 110 282 116 Q276 120 268 116 Q248 108 230 106 Z" fill="#dcd9d2"/>
+    <ellipse cx="281" cy="111" rx="6" ry="5" fill="#c8956c"/>
+
+    <!-- thobe legs -->
+    <path d="M206 118 Q200 90 214 72 L250 72 Q262 92 258 118 Q256 142 246 156 L226 156 Q210 140 206 118 Z" fill="url(#thobe)"/>
+    <path d="M222 86 Q220 116 224 144" fill="none" stroke="#b9b5ab" stroke-width="2"/>
+    <path d="M240 84 Q242 114 238 148" fill="none" stroke="#b9b5ab" stroke-width="2"/>
+    <ellipse cx="238" cy="160" rx="10" ry="5" fill="#8a5a32"/>
+
+    <!-- torso + bisht -->
+    <path d="M212 76 Q210 44 232 38 Q254 44 252 76 Q252 86 232 88 Q212 86 212 76 Z" fill="url(#thobe)"/>
+    <path d="M212 50 Q206 70 210 86 L218 84 Q214 66 218 50 Z" fill="#6b4226"/>
+    <path d="M252 50 Q258 70 254 86 L246 84 Q250 66 246 50 Z" fill="#6b4226"/>
+    <path d="M213 50 Q208 70 211 85" fill="none" stroke="#d4af37" stroke-width="2"/>
+    <path d="M251 50 Q256 70 253 85" fill="none" stroke="#d4af37" stroke-width="2"/>
+
+    <!-- near arm holding bag -->
+    <path d="M218 58 Q204 74 200 96 Q198 106 206 108 Q212 108 214 98 Q218 80 228 68 Z" fill="#fff"/>
+    <ellipse cx="206" cy="106" rx="6.5" ry="6" fill="#c8956c"/>
+
+    <!-- head -->
+    <circle cx="232" cy="26" r="15" fill="#c8956c"/>
+    <path d="M220 30 Q222 44 232 46 Q242 44 244 30 Q240 40 232 41 Q224 40 220 30 Z" fill="#3a3a3a"/>
+    <circle cx="227" cy="24" r="1.8" fill="#2b1708"/>
+    <circle cx="238" cy="24" r="1.8" fill="#2b1708"/>
+    <path d="M223 20 L230 19 M235 19 L242 20" stroke="#2b1708" stroke-width="1.6" stroke-linecap="round"/>
+    <path d="M228 34 Q232 37 236 34" fill="none" stroke="#7a4a2a" stroke-width="1.6" stroke-linecap="round"/>
+
+    <!-- shemagh -->
+    <path d="M214 22 Q212 4 232 2 Q252 4 250 22 Q250 12 232 10 Q214 12 214 22 Z" fill="url(#shemaghPat)"/>
+    <path d="M215 20 Q214 8 232 6 Q250 8 249 20 L250 26 Q244 14 232 14 Q220 14 214 26 Z" fill="url(#shemaghPat)"/>
+    <g class="shemagh-tail">
+      <path d="M214 20 Q206 34 208 54 Q212 60 218 56 Q220 38 222 26 Z" fill="url(#shemaghPat)"/>
+    </g>
+    <ellipse cx="232" cy="12" rx="18" ry="6" fill="none" stroke="#1a1a1a" stroke-width="4"/>
+    <ellipse cx="232" cy="15" rx="17" ry="5.5" fill="none" stroke="#1a1a1a" stroke-width="2.5"/>
+
+    <!-- RATNOR shopping bag swinging -->
+    <g class="bag">
+      <g transform="translate(178, 108)">
+        <path d="M16 18 L16 8 Q16 -4 30 -4 Q44 -4 44 8 L44 18" fill="none" stroke="#d4af37" stroke-width="5" stroke-linecap="round"/>
+        <path d="M4 14 L56 14 L52 74 Q52 80 46 80 L14 80 Q8 80 8 74 Z" fill="url(#bagBlue)"/>
+        <path d="M8 16 L20 16 L17 78 L11 78 Z" fill="#fff" opacity=".12"/>
+        <text x="30" y="58" text-anchor="middle" font-family="Georgia, serif" font-size="34" font-weight="bold" fill="#fff">R</text>
+        <path d="M50 20 L60 24 L56 34 L47 30 Z" fill="#d4af37"/>
+        <circle cx="52" cy="24" r="1.8" fill="#fff"/>
+      </g>
+    </g>
+  </svg>
+  </div>
+</div>
+
+<div class="loader">
+  <span></span><span></span><span></span>
+</div>
+
+<script>
+  for (let i = 0; i < 28; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = 1 + Math.random() * 2.5;
+    s.style.width = size + 'px';
+    s.style.height = size + 'px';
+    s.style.left = Math.random() * 100 + 'vw';
+    s.style.top = Math.random() * 34 + 'vh';
+    s.style.animationDuration = (1.5 + Math.random() * 3) + 's';
+    s.style.animationDelay = (Math.random() * 3) + 's';
+    document.body.appendChild(s);
+  }
+  for (let i = 0; i < 16; i++) {
+    const p = document.createElement('div');
+    p.className = 'sand';
+    const size = 2 + Math.random() * 3.5;
+    p.style.width = size + 'px';
+    p.style.height = size + 'px';
+    p.style.bottom = (4 + Math.random() * 24) + 'vh';
+    p.style.left = '0';
+    p.style.animationDuration = (8 + Math.random() * 10) + 's';
+    p.style.animationDelay = (Math.random() * 10) + 's';
+    document.body.appendChild(p);
+  }
+</script>
+
+</body>
+</html>

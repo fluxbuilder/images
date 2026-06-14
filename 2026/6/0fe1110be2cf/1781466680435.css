@@ -1,0 +1,434 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #1A73E8;
+    --primary-dark: #0D47A1;
+    --secondary: #34A853;
+    --warning: #FBBC05;
+    --danger: #EA4335;
+    --background: #F8F9FA;
+    --surface: #FFFFFF;
+    --text-primary: #202124;
+    --text-secondary: #5F6368;
+    --gradient-start: #1A73E8;
+    --gradient-end: #0D47A1;
+}
+
+body {
+    font-family: 'Segoe UI', 'Tajawal', system-ui, -apple-system, sans-serif;
+    background: var(--background);
+    color: var(--text-primary);
+    line-height: 1.5;
+    direction: rtl;
+}
+
+.app-container {
+    max-width: 500px;
+    margin: 0 auto;
+    background: var(--background);
+    min-height: 100vh;
+    padding-bottom: 30px;
+}
+
+/* شريط الحالة */
+.status-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 20px;
+    background: var(--surface);
+    font-size: 14px;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+/* الهيدر */
+.header {
+    position: relative;
+    background: var(--surface);
+    border-radius: 0 0 32px 32px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.header-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    opacity: 0.1;
+}
+
+.header-content {
+    position: relative;
+    padding: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.logo-icon {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: white;
+}
+
+.logo-text h1 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.logo-text span {
+    font-size: 12px;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.header-stats {
+    display: flex;
+    justify-content: space-around;
+    background: var(--surface);
+    border-radius: 20px;
+    padding: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.header-stat {
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.stat-label {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+/* زر المسح */
+.scan-section {
+    padding: 0 20px;
+    margin-bottom: 24px;
+}
+
+.scan-button {
+    width: 100%;
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    border: none;
+    border-radius: 60px;
+    padding: 18px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 8px 20px rgba(26,115,232,0.3);
+}
+
+.scan-button:active {
+    transform: scale(0.98);
+}
+
+.scan-button-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.scan-icon {
+    font-size: 24px;
+}
+
+.scan-text {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.scan-progress {
+    margin-top: 12px;
+}
+
+.progress-bar {
+    height: 6px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    width: 0%;
+    height: 100%;
+    background: white;
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    font-size: 12px;
+    margin-top: 8px;
+    opacity: 0.9;
+}
+
+/* الخدمات السريعة */
+.services-section {
+    padding: 0 20px;
+    margin-bottom: 24px;
+}
+
+.services-section h3 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.service-card {
+    background: var(--surface);
+    border-radius: 20px;
+    padding: 16px 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.service-card:active {
+    transform: scale(0.96);
+}
+
+.service-icon {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.service-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.service-size {
+    font-size: 10px;
+    color: var(--text-secondary);
+    margin-top: 4px;
+}
+
+/* التطبيقات */
+.apps-section {
+    padding: 0 20px;
+    margin-bottom: 24px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.section-header h3 {
+    font-size: 16px;
+}
+
+.see-all {
+    background: none;
+    border: none;
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.apps-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.app-card {
+    background: var(--surface);
+    border-radius: 16px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.2s;
+}
+
+.app-icon {
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, #E8F0FE, #D2E3FC);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+
+.app-info {
+    flex: 1;
+}
+
+.app-name {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.app-package {
+    font-size: 10px;
+    color: var(--text-secondary);
+}
+
+.app-cache {
+    font-size: 12px;
+    color: var(--primary);
+    font-weight: 500;
+}
+
+.loading {
+    text-align: center;
+    padding: 30px;
+    color: var(--text-secondary);
+}
+
+/* حالة الحماية */
+.protection-status {
+    margin: 0 20px 24px;
+    background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
+    border-radius: 20px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.protection-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--secondary);
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: white;
+}
+
+.protection-info {
+    flex: 1;
+}
+
+.protection-info h4 {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.protection-info p {
+    font-size: 11px;
+    color: #2E7D32;
+}
+
+.protection-badge {
+    background: var(--secondary);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+/* الفوتر */
+footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 11px;
+    color: var(--text-secondary);
+    border-top: 1px solid rgba(0,0,0,0.05);
+    margin-top: 20px;
+}
+
+/* مودال */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: var(--surface);
+    border-radius: 28px;
+    width: 90%;
+    max-width: 340px;
+    overflow: hidden;
+}
+
+.modal-header {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    font-size: 18px;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.modal-body {
+    padding: 20px;
+    text-align: center;
+}
+
+.modal-footer {
+    padding: 16px 20px;
+    border-top: 1px solid #eee;
+}
+
+.modal-footer button {
+    width: 100%;
+    padding: 12px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}

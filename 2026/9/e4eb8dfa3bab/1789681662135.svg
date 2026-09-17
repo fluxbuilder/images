@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- تدرج الخلفية الخضراء الزمردية الملكية -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#064e3b" />
+      <stop offset="50%" stop-color="#022c22" />
+      <stop offset="100%" stop-color="#011a14" />
+    </linearGradient>
+
+    <!-- تدرج اللون الذهبي الدافئ لليد والمؤشر -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
+
+    <!-- ظل مجسم للعناصر -->
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <!-- الخلفية المربعة المتوافقة مع سياسات Google Play -->
+  <rect width="512" height="512" fill="url(#bgGrad)" />
+
+  <!-- إطار داخلي رفيع جداً لإبراز الفخامة -->
+  <rect x="20" y="20" width="472" height="472" rx="40" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.1" />
+
+  <!-- العنصر المركزي: حقيبة أعمال مع دبوس موقع جغرافي للمدن -->
+  <g filter="url(#shadow)">
+    <!-- مقبض الحقيبة الذهبي -->
+    <path d="M190 140 C190 120, 205 105, 225 105 L287 105 C307 105, 322 120, 322 140 L322 165 L190 165 Z" 
+          fill="none" stroke="url(#goldGrad)" stroke-width="20" stroke-linecap="round" />
+
+    <!-- جسم الحقيبة الأبيض الناصع -->
+    <rect x="100" y="165" width="312" height="220" rx="32" fill="#ffffff" />
+
+    <!-- خط الثني الداخلي للحقيبة -->
+    <path d="M100 235 L220 285 C242 295, 270 295, 292 285 L412 235" 
+          fill="none" stroke="#e2e8f0" stroke-width="14" />
+
+    <!-- قفل الحقيبة المدمج مع دبوس الموقع الجغرافي للمدن -->
+    <g transform="translate(256, 270)">
+      <circle cx="0" cy="0" r="52" fill="#064e3b" />
+      <circle cx="0" cy="-5" r="18" fill="url(#goldGrad)" />
+      <path d="M0 13 L16 36 L-16 36 Z" fill="#064e3b" />
+    </g>
+  </g>
+
+  <!-- النص السفلي الواضح -->
+  <text x="256" y="445" 
+        text-anchor="middle" 
+        fill="#f1f5f9" 
+        font-family="system-ui, -apple-system, sans-serif" 
+        font-size="32" 
+        font-weight="800" 
+        letter-spacing="3">وظائف السعودية</text>
+</svg>

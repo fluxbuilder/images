@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- خلفية داكنة فخمة من درجات الأسود المزرق -->
+    <linearGradient id="darkBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="50%" stop-color="#090d16" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+
+    <!-- تدرج أخضر نيون متوهج للخطوط -->
+    <linearGradient id="greenNeon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+
+    <!-- تدرج ذهبي دافئ للمقبض والنقطة المركزية -->
+    <linearGradient id="goldAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
+
+    <!-- هالة توهج خضراء خافتة تبرز في الوضع المظلم -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="18" flood-color="#10b981" flood-opacity="0.25" />
+      <feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#000000" flood-opacity="0.7" />
+    </filter>
+  </defs>
+
+  <!-- خلفية الشعار المربعة -->
+  <rect width="512" height="512" fill="url(#darkBg)" />
+
+  <!-- إطار خارجي دقيق متوهج -->
+  <rect x="20" y="20" width="472" height="472" rx="40" fill="none" stroke="#34d399" stroke-width="1.5" stroke-opacity="0.15" />
+
+  <!-- العنصر المركزي للوضع الداكن -->
+  <g filter="url(#glow)">
+    <!-- مقبض الحقيبة الذهبي -->
+    <path d="M190 140 C190 120, 205 105, 225 105 L287 105 C307 105, 322 120, 322 140 L322 165 L190 165 Z" 
+          fill="none" stroke="url(#goldAccent)" stroke-width="20" stroke-linecap="round" />
+
+    <!-- جسم الحقيبة الداكن المعدني -->
+    <rect x="100" y="165" width="312" height="220" rx="32" fill="#1e293b" stroke="#334155" stroke-width="3" />
+
+    <!-- خط الثني الأخضر النيوني -->
+    <path d="M100 235 L220 285 C242 295, 270 295, 292 285 L412 235" 
+          fill="none" stroke="url(#greenNeon)" stroke-width="8" stroke-linecap="round" stroke-opacity="0.9" />
+
+    <!-- قفل الحقيبة ودبوس المدينة في الوضع الليلي -->
+    <g transform="translate(256, 270)">
+      <circle cx="0" cy="0" r="52" fill="#090d16" stroke="#34d399" stroke-width="3" />
+      <circle cx="0" cy="-6" r="18" fill="url(#goldAccent)" />
+      <path d="M0 12 L16 36 L-16 36 Z" fill="#34d399" />
+    </g>
+  </g>
+
+  <!-- نص أبيض ثلجي واضح جداً في الظلام -->
+  <text x="256" y="445" 
+        text-anchor="middle" 
+        fill="#f8fafc" 
+        font-family="system-ui, -apple-system, sans-serif" 
+        font-size="32" 
+        font-weight="800" 
+        letter-spacing="3">وظائف السعودية</text>
+</svg>
